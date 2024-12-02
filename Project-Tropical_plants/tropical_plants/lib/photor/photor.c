@@ -1,7 +1,17 @@
+/*************************************************************************
+*  Title:    Library for interfacing with the photoresistor on ADC 
+*  Author:   Dominik Chalupka
+*  File:     photor.c
+*  Software: PlatformIO
+*  Hardware: Arduino Uno
+*  License:  MIT
+**************************************************************************/
+
 #include <avr/io.h>         // AVR device-specific IO definitions
 #include <util/delay.h>     // Functions for busy-wait delay loops
 #include <avr/interrupt.h>  // Interrupts standard C library for AVR-GCC
-#include <stdlib.h> 
+#include <stdlib.h>
+
 
 
 

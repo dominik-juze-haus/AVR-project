@@ -7,12 +7,23 @@
 #include <photor.h>         // photoresistor library for reading analog values
 #include "timer.h"          // Timer library for AVR-GCC
 
-
-#define LED_GREEN_PORT PORTB
+// extrenal LED_GREEN connection
+#define LED_GREEN_PORT PORTB 
 #define LED_GREEN_PIN 0
 
-const uint16_t photor_voltage_threshold = 500;
-uint16_t photor_voltage_value;
+//DHT12 Temperature humidity sensor
+#define DHT12_ADR 0x5c
+#define DHT12_HUM_mem 0
+#define DHT12_TEMP_mem 2
+
+
+// Photoresitor variables
+const uint16_t photor_voltage_threshold = 500; // Threshold for turning on the LED
+uint16_t photor_voltage_value; // ADC value of the photoresistor
+
+// DHT12 variables
+volatile uint8_t DHT12_data[5]; // Array for storing data from DHT12 sensor
+
 
 
 int main(void)
@@ -39,10 +50,35 @@ int main(void)
 
 ISR(TIMER1_OVF_vect)
 {
+    static uint8_t DHT12_countdown = 0;
+    DHT12_countdown++;
 
-    char string[1];  // String for converted numbers by itoa()
-    itoa(photor_voltage_value, string, 10);
-    uart_puts(string);
+    if (DHT12_countdown >= 50) // 50 * 33ms = 1.65s countdown
+    {
+        DHT12_countdown = 0;
+        THS_dataread(DHT12_ADR, DHT12_HUM_mem, DHT12_data, 5); // Read data from DHT12 sensor
+        
+    }
+    
+
+    char photor_val_string[1];  // String for photoresiiostor value
+    char DHT12_hum_string[1];  // String for DHT12 humidity value
+    char DHT12_temp_string[1];  // String for DHT12 temperature value
+    char DHT12_checksum_string[1];  // String for DHT12 checksum value
+
+
+    sprintf(photor_val_string, "Light intensity: %d", photor_voltage_value);
+    sprintf(DHT12_hum_string, "Humidity: %u.%u \t\t", DHT12_data[0], DHT12_data[1]);
+    sprintf(DHT12_temp_string, "Temperature: %u.%u °C\t\t", DHT12_data[2], DHT12_data[3]);
+    sprintf(DHT12_checksum_string, "Checksum: %u\t\t", DHT12_data[4]);
+
+
+
+
+    uart_puts(photor_val_string);
+    uart_puts(DHT12_hum_string);
+    uart_puts(DHT12_temp_string);
+    uart_puts(DHT12_checksum_string);
     uart_puts("\r\n");
     
     // Turn on the LED if the photor voltage is above the threshold

@@ -20,19 +20,23 @@ void I2C_stop() {
 }
 
 uint8_t I2C_read(uint8_t ack) {
-    TWCR = (1 << TWEN) | (1 << TWINT) | (ack << TWEA);  // Send ACK or NACK
-    while (!(TWCR & (1 << TWINT)));
+    if (ack = I2C_ACK) {
+        TWCR = (1 << TWEN) | (1 << TWINT) | (1 << TWEA);  // Send ACK
+    } else {
+        TWCR = (1 << TWEN) | (1 << TWINT);  // Send NACK
+    }
+    while (!(TWCR & (1 << TWINT))); // Wait for transmission
     return TWDR;
 }
 
 uint8_t I2C_write(uint8_t data) {
-uint8_t status;
+    uint8_t status;
 
     TWDR = data;  // Load data
-    TWCR = (1 << TWEN) | (1 << TWINT);
+    TWCR = (1 << TWEN) | (1 << TWINT); //enable TWI and clear interrupt flag
     while (!(TWCR & (1 << TWINT)));  // Wait for transmission
 
-    status = TWSR & 0xF8;
+    status = TWSR & 0xF8;   // Mask status
 
     if (status == 0x18 || status == 0x28 || status == 0x40) {
         return 0;  // ACK received
@@ -42,14 +46,15 @@ uint8_t status;
 
 }
 
+//
 uint8_t I2C_read_ack() {
     TWCR = (1 << TWEN) | (1 << TWINT) | (1 << TWEA);  // Send ACK
-    while (!(TWCR & (1 << TWINT)));
+    while (!(TWCR & (1 << TWINT))); // Wait for transmission
     return TWDR;
 }
-
+//
 uint8_t I2C_read_nack() {
     TWCR = (1 << TWEN) | (1 << TWINT);  // Send NACK
-    while (!(TWCR & (1 << TWINT)));
+    while (!(TWCR & (1 << TWINT))); // Wait for transmission
     return TWDR;
 }

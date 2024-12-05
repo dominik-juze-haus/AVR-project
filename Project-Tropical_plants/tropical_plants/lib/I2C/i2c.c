@@ -1,3 +1,11 @@
+/*************************************************************************
+*  Title:    I2C simple library for AVR-GCC
+*  Author:   Dominik Chalupka
+*  File:     I2C.c
+*  Software: PlatformIO
+*  Hardware: Arduino Uno
+*  License:  MIT
+**************************************************************************/
 #include <avr/io.h>
 #include "i2c.h"
 

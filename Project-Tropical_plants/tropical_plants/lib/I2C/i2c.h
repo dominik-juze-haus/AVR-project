@@ -24,17 +24,13 @@
 
 
 void I2C_init();
-
 void I2C_start();
-
 void I2C_stop();
 
 uint8_t I2C_read(uint8_t ack);
-
 uint8_t I2C_write(uint8_t data);
-
-uint8_t I2C_test_adress(uint8_t adress);
-
+uint8_t I2C_read_ack();
+uint8_t I2C_read_nack();
 
 
 

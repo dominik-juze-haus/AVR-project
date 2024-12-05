@@ -94,6 +94,9 @@
 /** @brief Stop timer, prescaler 000 --> STOP */
 #define TIM2_stop() TCCR2B &= ~((1<<CS22) | (1<<CS21) | (1<<CS20));
 
+
+#define TIM2_ovf_1sec() TCCR2B &= ~((1<<CS21) | (1<<CS20)); TCCR2B |= (1<<CS22);
+
 /** @brief Set overflow 16ms, prescaler // 111 --> 1024 */
 #define TIM2_ovf_16ms() TCCR2B |= (1<<CS22) | (1<<CS21) | (1<<CS20);
 

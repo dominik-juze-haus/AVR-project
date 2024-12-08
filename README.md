@@ -25,3 +25,5 @@ List of components in the project:
 - Capacitive soil moisture sensor v1.2
 - Non-soldering field
 - Wires
+
+##Instructions and photos

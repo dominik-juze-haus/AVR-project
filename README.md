@@ -14,4 +14,14 @@ Our project deals with the recording of values such as air temperature and humid
 ![Drawing](https://github.com/user-attachments/assets/90f193f8-ce5e-4905-ad17-c80b4edf4d62)
 
 List of components in the project:
-- 
+- 12VDC voltage source
+- NPN transistor
+- Fan
+- Arduino uno
+- Resistor 200 Ohm
+- Photoresistor
+- SH1106 OLED Display
+- Air temperature and humidity sensor DHT12
+- Capacitive soil moisture sensor v1.2
+- Non-soldering field
+- Wires

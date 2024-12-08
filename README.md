@@ -27,3 +27,9 @@ List of components in the project:
 - Wires
 
 ## Instructions and photos
+
+
+## References and tools
+
+1. Visio.com
+2. 

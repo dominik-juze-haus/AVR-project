@@ -26,6 +26,8 @@ List of components in the project:
 - Non-soldering field
 - Wires
 
+Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC (analog-to-digital converter) depending on the light intensity.
+
 ## Instructions and photos
 
 

@@ -12,3 +12,6 @@ Our project deals with the recording of values such as air temperature and humid
 
 ## Schematic
 ![Drawing](https://github.com/user-attachments/assets/90f193f8-ce5e-4905-ad17-c80b4edf4d62)
+
+List of components in the project:
+- 

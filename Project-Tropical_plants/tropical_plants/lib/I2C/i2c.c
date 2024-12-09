@@ -28,7 +28,7 @@ void I2C_stop() {
 }
 
 uint8_t I2C_read(uint8_t ack) {
-    if (ack = I2C_ACK) {
+    if (ack == I2C_ACK) {
         TWCR = (1 << TWEN) | (1 << TWINT) | (1 << TWEA);  // Send ACK
     } else {
         TWCR = (1 << TWEN) | (1 << TWINT);  // Send NACK

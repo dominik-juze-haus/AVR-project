@@ -17,7 +17,7 @@ List of components in the project:
 - 12VDC voltage source
 - NPN transistor
 - Fan
-- Arduino uno
+- Arduino Uno board
 - Resistor 200 Ohm
 - Photoresistor
 - SH1106 OLED Display
@@ -26,7 +26,7 @@ List of components in the project:
 - Non-soldering field
 - Wires
 
-Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly. The OLED display communicates via I2C bus with arduino, which uses 2 pins. SDA is the data line and SCL is the clock line. It is the principle of one master and several slaves, and the power supply is connected via Rd resistors.
+The LED indicates insufficient lighting and i controlled via a digital pin, which is regulated by the Arduino's ADC depending on the amount of light falling on the photoresistor. The fan is operated by a PWM signal from the board and changes it's speed depending on the humidity readings. The NPN transistor is used here to switch the fan on and off for temperature and humidity regulation. It needs a 12V power supply to function properly. The OLED display communicates via I2C bus with arduino and displays all sensor readings. It is the principle of one master and several slaves.
 
 ## Instructions and photos
 ![1000027171](https://github.com/user-attachments/assets/8986efcb-698f-4686-a587-29c6455c2acc)

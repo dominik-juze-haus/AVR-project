@@ -16,7 +16,7 @@
 #include <uart.h>
 #include "THS.h"
 
-
+volatile long int timeout = 100000;  // Timeout variable  
 
 void THS_init() {
     // Set DHT11 pin as output to send start signal to the sensor
@@ -43,7 +43,7 @@ uint8_t THS_dataread(float *temperature, float *humidity) {
     uart_puts("\r\n");
 
     GPIO_write_high(&DHT11_PORT,DHT11_PIN);   // Pull pin high
-    _delay_us(30);               // Wait for 20-40 us
+    _delay_us(40);               // Wait for 20-40 us
     sprintf(debug_string, "Pull up 40 us");
 
     // Set pin to input to read data
@@ -60,9 +60,14 @@ uint8_t THS_dataread(float *temperature, float *humidity) {
     
     // DDRB &= ~(1 << DHT11_PIN);
     // Wait DHT11 response
-    _delay_us(80);
+    //_delay_us(80);
+    timeout = 100000;
+    while (GPIO_read(&DHT11_PORT, DHT11_PIN) == 0 && --timeout);  // Wait for the sensor to pull the pin high
+    if (timeout == 0) sprintf(debug_string, "Timemout");     // Return an error code if the sensor does not pull the pin high
+    uart_puts(debug_string);
+    uart_puts("\r\n");
 
-    if (GPIO_read(&DHT11_PORT, DHT11_PIN) == 1) { // Check if the pin is high
+    if (GPIO_read(&DHT11_PORT, DHT11_PIN) == 1) {   // Check if the pin is high
         sprintf(debug_string, "Sensor response received");
         _delay_us(80);
     }
@@ -71,12 +76,12 @@ uint8_t THS_dataread(float *temperature, float *humidity) {
     for (int byte = 0; byte < 5; byte++) { 
             for (int bit = 0; bit < 8; bit++) {
 
-                //volatile long int timeout = 100000; // Timeout variable                   
-                //while (GPIO_read(&DHT11_PORT, DHT11_PIN) && --timeout);  // Wait for the sensor to pull the pin high
-                //if (timeout == 0) sprintf(debug_string, "Timemout");     // Return an error code if the sensor does not pull the pin high
-                //uart_puts(debug_string);
-                //uart_puts("\r\n");
-                _delay_us(50);
+                timeout = 100000;                 
+                while (GPIO_read(&DHT11_PORT, DHT11_PIN) && --timeout);  // Wait for the sensor to pull the pin high
+                if (timeout == 0) sprintf(debug_string, "Timemout");     // Return an error code if the sensor does not pull the pin high
+                uart_puts(debug_string);
+                uart_puts("\r\n");
+                //_delay_us(50);
                 if (GPIO_read(&DHT11_PORT, DHT11_PIN) == 0) 
                 {   sprintf(debug_string, "Error, expected 1");
                     uart_puts(debug_string);

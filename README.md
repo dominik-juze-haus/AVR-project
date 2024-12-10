@@ -26,7 +26,7 @@ List of components in the project:
 - Non-soldering field
 - Wires
 
-Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly. The OLED display and the DHT11 sensor communicate with each other via the I2C bus, which uses 2 pins. SDA is the data line and SCL is the clock line. It is the principle of one master and several slaves, and the power supply is connected via Rd resistors.
+Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly. The OLED display communicates via I2C bus with arduino, which uses 2 pins. SDA is the data line and SCL is the clock line. It is the principle of one master and several slaves, and the power supply is connected via Rd resistors.
 
 ## Instructions and photos
 ![1000027171](https://github.com/user-attachments/assets/8986efcb-698f-4686-a587-29c6455c2acc)

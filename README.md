@@ -28,6 +28,12 @@ List of components in the project:
 
 The LED indicates insufficient lighting and i controlled via a digital pin, which is regulated by the Arduino's ADC depending on the amount of light falling on the photoresistor. The fan is operated by a PWM signal from the board and changes it's speed depending on the humidity readings. The NPN transistor is used here to switch the fan on and off for temperature and humidity regulation. It needs a 12V power supply to function properly. The OLED display communicates via I2C bus with arduino and displays all sensor readings. It is the principle of one master and several slaves.
 
+## Modules
+# Main
+Main module includes all the header files, defines connection for simple parts (LED) and initializes all services and routines. It contains a main loop which utilizes declared functions from the library to obtain measurments from sensors and communicate with I2C peripherals, prepare data into pretty strings and put them on the OLED display and into the serial monitor UART.
+#photor
+
+
 ## Instructions and photos
 ![1000027171](https://github.com/user-attachments/assets/8986efcb-698f-4686-a587-29c6455c2acc)
 
@@ -37,4 +43,4 @@ https://github.com/user-attachments/assets/09fd01c2-3a24-49cf-b40c-fbae61326e49
 
 1. Visio.com
 2. Simul.ide
-3. Solidworks
+3. Autodesk Fusion

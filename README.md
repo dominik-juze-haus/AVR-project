@@ -29,7 +29,9 @@ List of components in the project:
 Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly.
 
 ## Instructions and photos
+![1000027171](https://github.com/user-attachments/assets/921009fc-6c6f-46ac-ba79-856d180d2c00)
 
+https://github.com/user-attachments/assets/09fd01c2-3a24-49cf-b40c-fbae61326e49
 
 ## References and tools
 

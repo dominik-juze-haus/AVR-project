@@ -21,12 +21,12 @@ List of components in the project:
 - Resistor 200 Ohm
 - Photoresistor
 - SH1106 OLED Display
-- Air temperature and humidity sensor DHT12
+- Air temperature and humidity sensor DHT11
 - Capacitive soil moisture sensor v1.2
 - Non-soldering field
 - Wires
 
-Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly. The OLED display and the DHT12 sensor communicate with each other via the I2C bus, which uses 2 pins. SDA is the data line and SCL is the clock line. It is the principle of one master and several slaves, and the power supply is connected via Rd resistors.
+Photoresistor controls the LEDs using a PWM signal, which is regulated by the Arduino's ADC depending on the light intensity. The NPN transistor is used here to switch the fan on and off for temperature regulation. It needs a 12V power supply to function properly. The OLED display and the DHT11 sensor communicate with each other via the I2C bus, which uses 2 pins. SDA is the data line and SCL is the clock line. It is the principle of one master and several slaves, and the power supply is connected via Rd resistors.
 
 ## Instructions and photos
 ![1000027171](https://github.com/user-attachments/assets/921009fc-6c6f-46ac-ba79-856d180d2c00)

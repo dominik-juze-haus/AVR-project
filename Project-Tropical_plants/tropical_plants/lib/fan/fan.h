@@ -1,5 +1,5 @@
-#ifndef SHS_H
-#define SHS_H
+#ifndef fan_h
+#define fan_h
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -13,9 +13,15 @@
 #define F_CPU 16000000  // CPU frequency in Hz required for UART_BAUD_SELECT
 #endif
 
-void ADC_read();
-int SHS_read(void);
-int map(int x, int in_min, int in_max, int out_min, int out_max);
+void PWM_init(void);
+
+void set_fan_speed(uint8_t speed);
+
+void tachometer_init(void);
+
+uint16_t get_rpm(void);
+
+
 
 
 #endif

@@ -26,11 +26,18 @@ void ADC_init() {
     ADCSRA |= (1 << ADEN) | (1 << ADIE);
 }
 
-void PHOTOR_read() {
+uint16_t PHOTOR_read() {
     // Mask to ensure channel number is within 0-7
     ADMUX = (ADMUX & 0xF8) | (0 & 0x07);  // Clear the channel bits and set the new channel
 
     // Start the conversion
     ADCSRA |= (1 << ADSC);
+
+    while (ADCSRA & (1 << ADSC)) {
+        // Wait for the conversion to complete
+    }
+
+    return ADC;
+
 }
 

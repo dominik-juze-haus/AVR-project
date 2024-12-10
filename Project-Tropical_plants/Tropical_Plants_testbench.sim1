@@ -4,7 +4,7 @@
 <mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="tropical_plants/.pio/build/uno/firmware.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
 </item>
 
-<item itemtype="LDR" CircId="LDR-5" mainComp="false" Show_id="false" Show_Val="false" Pos="16,-16" rotation="90" hflip="1" vflip="1" label="LDR-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="456 Lux" Min_Lux="1e-12 Lux" Max_Lux="1000 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
+<item itemtype="LDR" CircId="LDR-5" mainComp="false" Show_id="false" Show_Val="false" Pos="16,-16" rotation="90" hflip="1" vflip="1" label="LDR-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="455 Lux" Min_Lux="1e-12 Lux" Max_Lux="1000 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="127410 Ω" Slider="false" Scale="1" />
 
 <item itemtype="Resistor" CircId="Resistor-6" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="16,32" rotation="90" hflip="1" vflip="1" label="Resistor-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="1 kΩ" />
 
@@ -17,6 +17,8 @@
 <item itemtype="Ground" CircId="Ground-24" mainComp="false" Show_id="false" Show_Val="false" Pos="16,88" rotation="0" hflip="1" vflip="1" label="Ground-24" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
 
 <item itemtype="Dht22" CircId="Dht22-26" mainComp="false" Show_id="false" Show_Val="false" Pos="-176,-228" rotation="0" hflip="1" vflip="1" label="THS-DHT11" idLabPos="-28,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" DHT22="DHT11" TempInc="0.5 °C" HumiInc="5 _%" />
+
+<item itemtype="Ssd1306" CircId="Ssd1306-27" mainComp="false" Show_id="true" Show_Val="false" Pos="-32,-192" rotation="0" hflip="1" vflip="1" label="Ssd1306-27" idLabPos="-32,-60" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="White" Width="128 _px" Height="64 _px" Rotate="true" Control_Code="60" Frequency="100 _kHz" />
 
 <item itemtype="Node" CircId="Node-25" mainComp="false" Pos="16,8" />
 
@@ -37,5 +39,9 @@
 <item itemtype="Connector" uid="Connector-96" startpinid="Uno-3-9" endpinid="Dht22-26-inPin" pointList="-272,-44,-384,-44,-384,-232,-212,-232" />
 
 <item itemtype="Connector" uid="Connector-97" startpinid="Uno-3-5V0" endpinid="LDR-5-lPin" pointList="-128,-44,-72,-44,-72,-84,16,-84,16,-32" />
+
+<item itemtype="Connector" uid="Connector-98" startpinid="Ssd1306-27-PinSda" endpinid="Uno-3-A4" pointList="-72,-144,-72,-116,-128,-116" />
+
+<item itemtype="Connector" uid="Connector-99" startpinid="Ssd1306-27-PinSck" endpinid="Uno-3-A5" pointList="-80,-144,-80,-124,-128,-124" />
 
 </circuit>

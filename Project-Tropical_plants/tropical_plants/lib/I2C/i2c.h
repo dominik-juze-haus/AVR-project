@@ -6,32 +6,25 @@
 #ifndef F_CPU
 #define F_CPU 16000000
 #endif
+#define twi_scl_clock 100000 //100kHz clock
+#define TWI_BAUDRATE ((F_CPU/twi_scl_clock)-16)/(2) //baudrate calculation
 
-#define I2C_SCL_CLOCK 100000 //100kHz clock
-#define I2C_BAUDRATE ((F_CPU/I2C_SCL_CLOCK)-16)/(2) //baudrate calculation
+#define twi_port PORTC
+#define twi_pin_sda 4 // PC4 - data pin
+#define twi_pin_scl 5 // PC5 - clock pin
 
+#define TWI_WRITE 0 //write mode value
+#define TWI_READ 1 //read mode value
+#define TWI_ACK 1   //acknowledge value
+#define TWI_NACK 0  //no acknowledge value
 
-#define I2C_PORT PORTC
-#define I2C_PIN_SDA 4 // PC4 - data pin
-#define I2C_PIN_SCL 5 // PC5 - clock pin
+void twi_init();
+void twi_start();
+void twi_stop();
 
-
-#define I2C_WRITE 0 //write mode value
-#define I2C_READ 1 //read mode value
-#define I2C_ACK 1   //acknowledge value
-#define I2C_NACK 0  //no acknowledge value
-
-
-
-void I2C_init();
-void I2C_start();
-void I2C_stop();
-
-uint8_t I2C_read(uint8_t ack);
-uint8_t I2C_write(uint8_t data);
-uint8_t I2C_read_ack();
-uint8_t I2C_read_nack();
-
-
+uint8_t twi_read(uint8_t ack);
+uint8_t twi_write(uint8_t data);
+uint8_t twi_read_ack();
+uint8_t twi_read_nack();
 
 #endif

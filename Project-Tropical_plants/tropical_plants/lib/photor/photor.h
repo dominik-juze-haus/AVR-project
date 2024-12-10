@@ -11,7 +11,7 @@
 
 
 void ADC_init();
-void PHOTOR_read();
+uint16_t PHOTOR_read();
 
 
 

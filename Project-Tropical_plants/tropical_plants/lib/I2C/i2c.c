@@ -7,28 +7,28 @@
 *  License:  MIT
 **************************************************************************/
 #include <avr/io.h>
-#include "i2c.h"
+#include "I2C.h"
 
 
-void I2C_init() {
+void twi_init() {
     // Set SCL frequency: SCL = F_CPU / (16 + 2 * TWBR * Prescaler)
     TWSR = 0x00;  // Set prescaler to 1
-    TWBR = I2C_BAUDRATE;  // Calculate TWBR value
+    TWBR = TWI_BAUDRATE;  // Calculate TWBR value
 }
 
-void I2C_start() {
+void twi_start() {
     // Send start condition
     TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT);
     while (!(TWCR & (1 << TWINT)));  // Wait for transmission
 }
 
-void I2C_stop() {
+void twi_stop() {
     // Send stop condition
     TWCR = (1 << TWSTO) | (1 << TWEN) | (1 << TWINT);
 }
 
-uint8_t I2C_read(uint8_t ack) {
-    if (ack = I2C_ACK) {
+uint8_t twi_read(uint8_t ack) {
+    if (ack == TWI_ACK) {
         TWCR = (1 << TWEN) | (1 << TWINT) | (1 << TWEA);  // Send ACK
     } else {
         TWCR = (1 << TWEN) | (1 << TWINT);  // Send NACK
@@ -37,7 +37,7 @@ uint8_t I2C_read(uint8_t ack) {
     return TWDR;
 }
 
-uint8_t I2C_write(uint8_t data) {
+uint8_t twi_write(uint8_t data) {
     uint8_t status;
 
     TWDR = data;  // Load data
@@ -54,14 +54,13 @@ uint8_t I2C_write(uint8_t data) {
 
 }
 
-//
-uint8_t I2C_read_ack() {
+uint8_t twi_read_ack() {
     TWCR = (1 << TWEN) | (1 << TWINT) | (1 << TWEA);  // Send ACK
     while (!(TWCR & (1 << TWINT))); // Wait for transmission
     return TWDR;
 }
-//
-uint8_t I2C_read_nack() {
+
+uint8_t twi_read_nack() {
     TWCR = (1 << TWEN) | (1 << TWINT);  // Send NACK
     while (!(TWCR & (1 << TWINT))); // Wait for transmission
     return TWDR;

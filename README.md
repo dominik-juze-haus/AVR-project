@@ -30,57 +30,83 @@ The LED indicates insufficient lighting and i controlled via a digital pin, whic
 
 # Modules
 ## Main
+
+**the source file**
+
 Main module includes all the header files, defines connection for simple parts (LED) and initializes all services and routines. It contains a main loop which utilizes declared functions from the library to obtain measurments from sensors and communicate with I2C peripherals, prepare data into pretty strings and put them on the OLED display and into the serial monitor UART.
 
 ## SHS
+
 **Reading values from the soil humidity sensor**
+
 *SHS.h, SHS.c*
+
 Header file again carrying function prototypes. C file utilizes the ADC_init from the photor library and reads from the sensor using the ADC channel 1. The map function then normalizes the data with a formula. The SHS_read function then utilizes the previous declared functions and returns the normalized soil humidity value.
 
 ## THS
-**Reading values from the DHT11 sensor through it's proprietary protocol
+
+**Reading values from the DHT11 sensor through it's proprietary protocol**
+
 *THS.h, THS.c*
+
 Even though we used a DHT12 in labs, we've chosen DHT11 for simulation reasons (in simulide by default). The DHT11 doesn't work on I2C, excepts it relies on single wire communication. It first needs a 18 ms low and 30 us high input stimulation, to which it replies with 80 us low and 80 us high ready signal followed by 40 bits of data. Each bit starts with 50 us low and is then followed by either 27 us high, which is 0, or 70 us high, which is 1. It communicates temperature decimal and integral, humidity decimal and integral and a checksum just like the DHT12. 
 In the header file, we defined the connections and function prototypes. In the C file, we initialize the pin and establish a debugged communication with the sensor as described. After obtaining data, we verify the checksum and if succesful, return the data for further operations.
 
 ## Photor
+
 **Reading value on the photoresistor**
+
 *photor.h, photor.c*
+
 The header file declares the function prototypes, it's pretty simple. The c file has the initialization function and therefore serves double pourpose for initializing the AD converter and reading the values from the particular channel the photoresistor is connected to. The ADC readings come from channel 0.
 
 ## Fan
+
 **Controling the fan speed and reading it's RPM**
+
 *fan.h, fan.c*
+
 The header file is, again, simple for function prototypes. The c file has a function that initializes the PWM signal generation at PD3 pin at an non-inverting mode. The tachometer function works on interupt that reads falling edges. It was important then to ensure that no any logical change would trigger interupt. The get_rpm function then calculates the RPM from the value of the counter that runs in the ISR through a simple formula. We are then displaying the RPM on the screen.
 
 ## GPIO *Atmel default*
+
 **General purpose input output**
+
 *gpio.h, gpio.c*
+
 For setting pins as inputs, outputs or setting them high or low. 
 
 ## I2C *From labs*
+
 **Two wire I2C protocol**
+
 *I2C.h, I2C.c*
+
 Library for communication with I2C parts, in our case, for communication with the OLED display. 
 
 ## OLED *from labs*
+
 **Code for operating the SH1106 OLED
+
 *OLED.h, OLED.c, font.h*
+
 The library for communicating with the OLED screen through I2C with a header file containing information about a font used for displayed text.
 
 ##UART *by Peter Fleury*
+
 **Code for using the UART serial monitor**
+
 *UART.h, UART.c*
+
 This module enables the UART serial monitor functionality primarily used for debugging, developmnent and simulations.
 
 # Enclosure design
 We chose and enclosure design that would make the unit an all-in-one solution directly stabbed to the soil. The fan would connect to pins on the chasis and would be the only external part. The design is plug-and-play.
 
-
-
-
-
-
+![Enclosure 1)(https://github.com/dominik-juze-haus/AVR-project/blob/main/Render1.png)
+![Enclosure 2)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render2.png)
+![Enclosure 3)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render3.png)
+![Enclosure 4)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render4.png)
 
 
 ## Instructions and photos

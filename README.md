@@ -104,8 +104,11 @@ This module enables the UART serial monitor functionality primarily used for deb
 We chose and enclosure design that would make the unit an all-in-one solution directly stabbed to the soil. The fan would connect to pins on the chasis and would be the only external part. The design is plug-and-play.
 
 ![Enclosure 1)(https://github.com/dominik-juze-haus/AVR-project/blob/main/Render1.png)
+
 ![Enclosure 2)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render2.png)
+
 ![Enclosure 3)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render3.png)
+
 ![Enclosure 4)(https://github.com/dominik-juze-haus/AVR-project/blob/main/render4.png)
 
 

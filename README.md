@@ -100,6 +100,8 @@ The library for communicating with the OLED screen through I2C with a header fil
 
 This module enables the UART serial monitor functionality primarily used for debugging, developmnent and simulations.
 
+## Instructions and photos
+Plug-and-play. Device turns on and starts functioning.
 # Enclosure design
 We chose and enclosure design that would make the unit an all-in-one solution directly stabbed to the soil. The fan would connect to pins on the chasis and would be the only external part. The design is plug-and-play.
 
@@ -112,9 +114,8 @@ We chose and enclosure design that would make the unit an all-in-one solution di
 ![Enclosure 4](https://github.com/dominik-juze-haus/AVR-project/blob/main/render4.png)
 
 
-## Instructions and photos
-Plug-and-play. Device turns on and starts functioning.
 
+## Development
 ![1000027171](https://github.com/user-attachments/assets/8986efcb-698f-4686-a587-29c6455c2acc)
 
 https://github.com/user-attachments/assets/09fd01c2-3a24-49cf-b40c-fbae61326e49
@@ -124,3 +125,5 @@ https://github.com/user-attachments/assets/09fd01c2-3a24-49cf-b40c-fbae61326e49
 1. Visio.com
 2. Simul.ide
 3. Autodesk Fusion
+4. Stack Overflow
+5. GPT4 for documentation

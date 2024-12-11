@@ -28,10 +28,12 @@ void set_fan_speed(uint8_t speed)
 // Tachometer initialization on pin D2 (INT0)
 void tachometer_init(void)
 {
-    EICRA |= (1 << ISC01); //falling edge will trigger interrupt
-    EICRA &= ~(1 << ISC00); //logical change wont trigger interrupt
+    DDRD &= ~(1 << PD2); // Set PD2 as input
+    PORTD |= (1 << PD2); // Enable pull-up resistor on PD2
+    EICRA |= (1 << ISC01); // Falling edge will trigger interrupt
+    EICRA &= ~(1 << ISC00); // Logical change won't trigger interrupt
 
-    EIMSK |= (1 << INT0); //enable external interrupt 0
+    EIMSK |= (1 << INT0); // Enable external interrupt 0
 }
 
 ISR(INT0_vect)

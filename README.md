@@ -11,7 +11,7 @@ Our project deals with the recording of values such as air temperature and humid
 - Samuel Gubi: responsible for coding and creating schematic
 
 ## Schematic
-![DE2_Schematic](https://github.com/user-attachments/assets/19ef0f04-6bf9-4653-a368-9838793214af)
+![DE2_Schematic (1)](https://github.com/user-attachments/assets/5cff2227-2f3b-4ff0-b624-b94a8917874e)
 
 List of components in the project:
 - 12VDC voltage source
